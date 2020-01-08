@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using GUI_WinForms.Presenter;
+using GUI_WinForms.Views;
+using Ninject;
+using System;
 using System.Windows.Forms;
 
 namespace GUI_WinForms
@@ -14,9 +14,18 @@ namespace GUI_WinForms
         [STAThread]
         static void Main()
         {
+            MainWindow mainWindow;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainWindow());
+
+            var container = new StandardKernel();
+
+            //Views
+            container.Bind<IView>().To<MainWindow>().InSingletonScope().Named("Main");
+            container.Bind<IView>().To<ItemForm>().Named("Item");
+
+            mainWindow = (MainWindow)container.Get<IView>("Main");
+            Application.Run(mainWindow);
         }
     }
 }

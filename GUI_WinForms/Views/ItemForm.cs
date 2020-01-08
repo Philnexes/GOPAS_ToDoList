@@ -1,20 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using GUI_WinForms.Presenter;
+using System;
 using System.Windows.Forms;
 
 namespace GUI_WinForms.Views
 {
-    public partial class ItemForm : Form
+    public partial class ItemForm : Form, IView
     {
-        public ItemForm()
-        {
+        public ItemForm() : this(string.Empty) { }
+
+        public ItemForm(string text)
+        {         
             InitializeComponent();
+            if (text != string.Empty)
+                itemTextBox.Text = text;
         }
 
         private void textLabel_Click(object sender, EventArgs e)
@@ -34,7 +32,12 @@ namespace GUI_WinForms.Views
 
         private void saveButton_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
 
+        public void UpdateView()
+        {
+            throw new NotImplementedException();
         }
     }
 }

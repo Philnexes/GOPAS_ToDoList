@@ -1,4 +1,4 @@
-﻿namespace GUI_WinForms
+﻿namespace GUI_WinForms.Views
 {
     partial class MainWindow
     {

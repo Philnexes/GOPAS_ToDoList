@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using GUI_WinForms.Presenter;
+using System;
 using System.Windows.Forms;
 
-namespace GUI_WinForms
+namespace GUI_WinForms.Views
 {
-    public partial class MainWindow : Form
+    public partial class MainWindow : Form, IView
     {
         public MainWindow()
         {
@@ -20,16 +14,25 @@ namespace GUI_WinForms
         private void addButton_Click(object sender, EventArgs e)
         {
             Console.WriteLine("add");
+            var itemForm = new ItemForm();       
+            itemForm.Show();
         }
 
         private void editButton_Click(object sender, EventArgs e)
         {
             Console.WriteLine("edit");
+            var itemForm = new ItemForm(/*tu prijde text z itemu*/);
+            itemForm.Show();
         }
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
             Console.WriteLine("delete");
+        }
+
+        public void UpdateView()
+        {
+            throw new NotImplementedException();
         }
     }
 }
