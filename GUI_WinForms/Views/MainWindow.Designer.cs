@@ -30,8 +30,8 @@
         {
             this.addButton = new System.Windows.Forms.Button();
             this.editButton = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.deleteButton = new System.Windows.Forms.Button();
+            this.itemsListView = new System.Windows.Forms.ListView();
             this.SuspendLayout();
             // 
             // addButton
@@ -56,35 +56,35 @@
             this.editButton.UseVisualStyleBackColor = true;
             this.editButton.Click += new System.EventHandler(this.editButton_Click);
             // 
-            // button3
+            // deleteButton
             // 
-            this.button3.AccessibleName = "deleteButton";
-            this.button3.Location = new System.Drawing.Point(214, 12);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(95, 47);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Delete";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.deleteButton_Click);
+            this.deleteButton.AccessibleName = "deleteButton";
+            this.deleteButton.Location = new System.Drawing.Point(214, 12);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(95, 47);
+            this.deleteButton.TabIndex = 2;
+            this.deleteButton.Text = "Delete";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
-            // listView1
+            // itemsListView
             // 
-            this.listView1.GridLines = true;
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(12, 65);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(297, 373);
-            this.listView1.TabIndex = 3;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
+            this.itemsListView.GridLines = true;
+            this.itemsListView.HideSelection = false;
+            this.itemsListView.Location = new System.Drawing.Point(12, 65);
+            this.itemsListView.Name = "itemsListView";
+            this.itemsListView.Size = new System.Drawing.Size(297, 373);
+            this.itemsListView.TabIndex = 3;
+            this.itemsListView.UseCompatibleStateImageBehavior = false;
+            this.itemsListView.View = System.Windows.Forms.View.Details;
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(323, 450);
-            this.Controls.Add(this.listView1);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.itemsListView);
+            this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.editButton);
             this.Controls.Add(this.addButton);
             this.Name = "MainWindow";
@@ -97,8 +97,8 @@
 
         private System.Windows.Forms.Button addButton;
         private System.Windows.Forms.Button editButton;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.ListView itemsListView;
     }
 }
 
