@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CB293DBE-5D72-4654-803B-1F328FCFA7BA}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>GUI_WinForms</RootNamespace>
-    <AssemblyName>GUI_WinForms</AssemblyName>
+    <ProjectGuid>{0B03BDA6-0DF1-41DC-AA70-B9F9325D8AE9}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ToDoListMVP</RootNamespace>
+    <AssemblyName>ToDoListMVP</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,13 +32,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Ninject, Version=3.3.4.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ninject.3.3.4\lib\net45\Ninject.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -52,27 +46,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Presenter\IView.cs" />
-    <Compile Include="Views\ItemForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\ItemForm.Designer.cs">
-      <DependentUpon>ItemForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\MainWindow.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Views\MainWindow.Designer.cs">
-      <DependentUpon>MainWindow.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Models\IToDoList.cs" />
+    <Compile Include="Models\ToDo.cs" />
+    <Compile Include="Models\ToDoList.cs" />
+    <Compile Include="Presenters\DetailViewData.cs" />
+    <Compile Include="Presenters\IToDoPresenter.cs" />
+    <Compile Include="Presenters\IView.cs" />
+    <Compile Include="Presenters\IViewFactory.cs" />
+    <Compile Include="Presenters\IViewHandler.cs" />
+    <Compile Include="Presenters\ListViewData.cs" />
+    <Compile Include="Presenters\ToDoPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Views\ItemForm.resx">
-      <DependentUpon>ItemForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\MainWindow.resx">
-      <DependentUpon>MainWindow.cs</DependentUpon>
-    </EmbeddedResource>
+    <Compile Include="Views\DetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ViewBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\WinFormsViewFactory.cs" />
+    <Compile Include="Views\WinFormsViewHandler.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -82,7 +78,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="packages.config" />
+    <EmbeddedResource Include="Views\DetailForm.resx">
+      <DependentUpon>DetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ListForm.resx">
+      <DependentUpon>ListForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ViewBase.resx">
+      <DependentUpon>ViewBase.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -96,8 +100,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

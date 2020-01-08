@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("GUI_WinForms")]
+[assembly: AssemblyTitle("ToDoListMVP")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("GUI_WinForms")]
+[assembly: AssemblyProduct("ToDoListMVP")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("cb293dbe-5d72-4654-803b-1f328fcfa7ba")]
+[assembly: Guid("0b03bda6-0df1-41dc-aa70-b9f9325d8ae9")]
 
 // Version information for an assembly consists of the following four values:
 //
