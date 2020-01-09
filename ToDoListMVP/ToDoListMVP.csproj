@@ -55,6 +55,10 @@
     <Compile Include="Presenters\IViewFactory.cs" />
     <Compile Include="Presenters\IViewHandler.cs" />
     <Compile Include="Presenters\ListViewData.cs" />
+    <Compile Include="Presenters\Processor\AddCommand.cs" />
+    <Compile Include="Presenters\Processor\DeleteCommand.cs" />
+    <Compile Include="Presenters\Processor\EditCommand.cs" />
+    <Compile Include="Presenters\Processor\ICommand.cs" />
     <Compile Include="Presenters\ToDoPresenter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

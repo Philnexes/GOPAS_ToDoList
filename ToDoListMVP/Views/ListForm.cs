@@ -13,10 +13,10 @@ namespace ToDoListMVP.Views
 
         protected override void InitializeComponent()
         {
-            this.addButton = new System.Windows.Forms.Button();
-            this.editButton = new System.Windows.Forms.Button();
-            this.deleteButton = new System.Windows.Forms.Button();
-            this.listBox = new System.Windows.Forms.ListBox();
+            this.addButton = new Button();
+            this.editButton = new Button();
+            this.deleteButton = new Button();
+            this.listBox = new ListBox();
             this.SuspendLayout();
             // 
             // addButton
