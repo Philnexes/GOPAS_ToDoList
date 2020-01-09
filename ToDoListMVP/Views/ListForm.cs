@@ -9,6 +9,7 @@ namespace ToDoListMVP.Views
         private Button addButton;
         private Button editButton;
         private Button deleteButton;
+        private Button undoButton;
         private ListBox listBox;
 
         protected override void InitializeComponent()
@@ -16,6 +17,7 @@ namespace ToDoListMVP.Views
             this.addButton = new System.Windows.Forms.Button();
             this.editButton = new System.Windows.Forms.Button();
             this.deleteButton = new System.Windows.Forms.Button();
+            undoButton = new Button();
             this.listBox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
@@ -49,30 +51,52 @@ namespace ToDoListMVP.Views
             this.deleteButton.UseVisualStyleBackColor = true;
             this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
+            // undoButton
+            // 
+            this.undoButton.Location = new System.Drawing.Point(256, 13);
+            this.undoButton.Name = "undoButton";
+            this.undoButton.Size = new System.Drawing.Size(75, 33);
+            this.undoButton.TabIndex = 3;
+            this.undoButton.Text = "Undo";
+            this.undoButton.UseVisualStyleBackColor = true;
+            this.undoButton.Click += UndoButton_Click; ;
+            // 
             // listBox
             // 
             this.listBox.FormattingEnabled = true;
             this.listBox.ItemHeight = 20;
             this.listBox.Location = new System.Drawing.Point(13, 52);
             this.listBox.Name = "listBox";
-            this.listBox.Size = new System.Drawing.Size(237, 184);
+            this.listBox.Size = new System.Drawing.Size(320, 224);
             this.listBox.TabIndex = 3;
             // 
             // ListForm
             // 
-            this.ClientSize = new System.Drawing.Size(278, 244);
+            this.ClientSize = new System.Drawing.Size(340, 344);
             this.Controls.Add(this.listBox);
             this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.editButton);
             this.Controls.Add(this.addButton);
+            this.Controls.Add(this.undoButton);
             this.Name = "ListForm";
             this.ResumeLayout(false);
 
         }
 
-        public ListForm(IToDoPresenter presenter) : base(presenter) {
-            presenter.ListView = this;
+        private void UndoButton_Click(object sender, System.EventArgs e)
+        {
+            commandProcessor.CompensateLast();
         }
+
+        public ListForm(ICommandProcessor commandProcessor, ICommandFactory commandFactory) : base(commandProcessor, commandFactory)
+        {
+            //presenter.ListView = this;
+            commandProcessor.ExecuteCommand(commandFactory.CreateSetListViewCommand(this));
+        }
+
+        
+
+        
 
         public override void UpdateView(ListViewData viewData)
         {
@@ -81,13 +105,13 @@ namespace ToDoListMVP.Views
         }
 
         private void addButton_Click(object sender, System.EventArgs e)
-            => presenter.AddAction();
+            => commandProcessor.ExecuteCommand(commandFactory.CreateAddCommand()); //presenter.AddAction();
 
         private void editButton_Click(object sender, System.EventArgs e)
-            => presenter.EditAction((ToDo)listBox.SelectedItem);
+            => commandProcessor.ExecuteCommand(commandFactory.CreateEditCommand((ToDo)listBox.SelectedItem)); //presenter.EditAction((ToDo)listBox.SelectedItem);
 
         private void deleteButton_Click(object sender, System.EventArgs e)
-            => presenter.DeleteAction((ToDo)listBox.SelectedItem);
+            => commandProcessor.ExecuteCommand(commandFactory.CreateDeleteCommand((ToDo)listBox.SelectedItem)); //presenter.DeleteAction((ToDo)listBox.SelectedItem);
 
     }
 }

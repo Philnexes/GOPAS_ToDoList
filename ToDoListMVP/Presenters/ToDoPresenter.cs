@@ -16,11 +16,14 @@ namespace ToDoListMVP.Presenters
         {
             this.model = model;
             this.viewFactory = viewFactory;
-            viewFactory.ToDoPresenter = this;
+            //viewFactory.ToDoPresenter = this;
             this.viewHandler = viewHandler;
         }
 
         public IView<ListViewData> ListView { get; set; }
+
+        public IEnumerable<ToDo> ToDoItems => model.Items;
+
         private Dictionary<int, IView<DetailViewData>> detailViews
             = new Dictionary<int, IView<DetailViewData>>();
 
@@ -50,7 +53,8 @@ namespace ToDoListMVP.Presenters
         public void SaveAction(ToDo item)
         {
             //((Form)detailViews[item.Id]).Close();
-            viewHandler.Close(detailViews[item.Id]);
+            if(detailViews.ContainsKey(item.Id)) 
+                viewHandler.Close(detailViews[item.Id]);
             detailViews.Remove(item.Id);
             model.Save(item);
             updateListView();

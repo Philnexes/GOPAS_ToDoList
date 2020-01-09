@@ -20,7 +20,11 @@ namespace ToDoListMVP
             var viewHandler = new WinFormsViewHandler();
             var viewFactory = new WinFormsViewFactory();
             var presenter = new ToDoPresenter(model, viewFactory, viewHandler);
-            Application.Run(new ListForm(presenter));
+            var commandProcessor = new CommandProcessor();
+            var commandFactory = new CommandFactory(presenter);
+            viewFactory.CommandProcessor = commandProcessor;
+            viewFactory.CommandFactory = commandFactory;
+            Application.Run(new ListForm(commandProcessor, commandFactory));
         }
     }
 }

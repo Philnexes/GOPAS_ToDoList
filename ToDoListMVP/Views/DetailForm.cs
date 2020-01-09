@@ -12,7 +12,9 @@ namespace ToDoListMVP.Views
         private Label textLabel;
         private int id;
 
-        public DetailForm(IToDoPresenter presenter) : base(presenter) { }
+        public DetailForm(ICommandProcessor commandProcessor, ICommandFactory commandFactory) : base(commandProcessor, commandFactory)
+        {
+        }
 
         public override void UpdateView(DetailViewData viewData)
         {
@@ -22,11 +24,18 @@ namespace ToDoListMVP.Views
         }
 
         private void SaveButton_Click(object sender, System.EventArgs e)
-            => presenter.SaveAction(new ToDo() {
-                Id = id,
-                Text = textTextBox.Text,
-                Done = doneCheckBox.Checked
-            });
+            => commandProcessor.ExecuteCommand(
+                commandFactory.CreateSaveCommand(new ToDo()
+                {
+                    Id = id,
+                    Text = textTextBox.Text,
+                    Done = doneCheckBox.Checked
+                }));
+            //=> presenter.SaveAction(new ToDo() {
+            //    Id = id,
+            //    Text = textTextBox.Text,
+            //    Done = doneCheckBox.Checked
+            //});
 
         protected override void InitializeComponent()
         {

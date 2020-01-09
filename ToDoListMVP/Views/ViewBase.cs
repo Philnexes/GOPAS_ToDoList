@@ -5,26 +5,20 @@ namespace ToDoListMVP.Views
 {
     public abstract class ViewBase<T> : Form, IView<T>
     {
-        protected IToDoPresenter presenter;
+        //protected IToDoPresenter presenter;
+        protected ICommandProcessor commandProcessor;
+        protected ICommandFactory commandFactory;
 
-        protected ViewBase(IToDoPresenter presenter)
+        protected ViewBase(ICommandProcessor commandProcessor, ICommandFactory commandFactory)
         {
             InitializeComponent();
-            this.presenter = presenter;
+            this.commandProcessor = commandProcessor;
+            this.commandFactory = commandFactory;
         }
 
         public abstract void UpdateView(T viewData);
 
         protected abstract void InitializeComponent();
-        //{
-        //    this.SuspendLayout();
-        //    // 
-        //    // ViewBase
-        //    // 
-        //    this.ClientSize = new System.Drawing.Size(278, 244);
-        //    this.Name = "ViewBase";
-        //    this.ResumeLayout(false);
-
-        //}
+        
     }
 }
